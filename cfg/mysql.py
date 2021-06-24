@@ -11,22 +11,23 @@ def FindConfig(name = 'my.cnf'):
         my_cnf = os.path.join(home,'.my.cnf')
     return my_cnf
 
-def ParseConfig(name, db_name = None):
+def ParseConfig(name, database = None, host = 'localhost', port = '3306', socket = '/tmp/mysql.sock'):
+    client = None
     config = ConfigParser()
-    config.read(name)
-    # Handly defaults
-    client = {
-            'port': '3306', 
-            'host': 'localhost', 
-            'socket': '/tmp/mysql.sock',
-            'database': db_name,
+    if config != None:
+        config.read(name)
+        # Set our handly defaults
+        client = { 
+            'host': host,
+            'port': port,
+            'socket': socket,
+            'database': database,
             'user': None,
             'password': None
-            }
-    if 'client' in config:
-        for key in config['client']:
-            client[key] = config['client'][key]
-    else:
-        print(f'ERROR: did not find client section in {my_cnf}')
-        return None
+        } 
+        if 'client' in config:
+            for key in config['client']:
+                client[key] = config['client'][key]
+        else:
+            return None
     return client 
