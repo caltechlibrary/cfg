@@ -1,7 +1,9 @@
-Template for software repositories by the Caltech Library
-=====================================================
+cfg
+===
 
-This is a template README file for software repositories.  This first paragraph of the README should summarize your software in a concise fashion, preferably using no more than one or two sentences.
+A small package for access various types of configuration files, 
+e.g. MySQL's my.cnf or other "ini" style configration. Wraps 
+Python 3's standard configparser. 
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg?style=flat-square)](https://choosealicense.com/licenses/bsd-3-clause)
 [![Latest release](https://img.shields.io/github/v/release/caltechlibrary/template.svg?style=flat-square&color=b44e88)](https://github.com/caltechlibrary/template/releases)
@@ -24,50 +26,65 @@ Table of contents
 Introduction
 ------------
 
-This repository is a GitHub template repository for creating software project repositories at the Caltech Library.  The [associated wiki page](https://github.com/caltechlibrary/template/wiki/Using-this-template-repo) explains how to use the template repository.
-
-This README file is in Markdown format, and is meant to provide a template for README files as well an illustration of what the README file can be expected to look like.  For a software project, this [Introduction](#introduction) section &ndash; which you are presently reading &ndash; should provide background for the project, a brief explanation of what the project is about, and optionally, pointers to resources that can help orient readers.  Ideally, this section should be short.
+This is a small simple configuration file utlity that wrap's Python 3's
+own configparser. Support initialization files are assumed to be in
+"ini" format and are associated with a support system like MySQL. Each
+support configuration file provides two functions, FindConfig() and
+ParseConfig(). FindConfig checks a series of path location for configuration
+and returns the first one found or None if no config file is discovered.
+ParseConfig takes the path from FindConfig and any additional optional
+parameters associated with the  resource (e.g. a database name in MySQL)
+and returns a dictionary of key/value parse.
 
 
 Installation
 ------------
 
-Begin this section by mentioning any prerequisites that may be important for users to have before they can use your software.  Examples include hardware and operating system requirements.
+cfg is installable with Python setup.py. 
 
-Next, provide step-by-step instructions for installing the software, preferably with command examples that can be copy-pasted by readers into their software environments. For example:
-
-```bash
-a command-line command here
 ```
-
-Sometimes, subsections may be needed for different operating systems or particularly complicated installations.
- 
+git clone git@github.com:caltechlibrary/cfg
+cd cfg
+python3 setup.py install
+```
 
 Usage
 -----
 
-This [Usage](#usage) section would explain more about how to run the software, what kind of behavior to expect, and so on.
+Once installed this Python 3 package can be included using 
+the standard `from cfg import ...` pattern. Here's an example
+of installing it to return a configuration needed for a MySQL
+connection.
 
-### _Basic operation_
+```
+import sys
+from cfg import FindConfig, ParseConfig
 
-Begin with the simplest possible example of how to use your software.  Provide example command lines and/or screen images, as appropriate, to help readers understand how the software is expected to be used.  Many readers are likely to look for command lines they can copy-paste directly from your explanations, so it's best to keep that in mind as you write examples.
+my_cnf = FindConfig()
+if my_cnf == None:
+    print('Can't find my.cnf')
+    sys.exit(1)
+conf = ParseConfig(my_cnf, database = 'mydb')
+if conf == None:
+    print(f'''Can't parse {my_cnf}''')
+    sys.exit(1)
 
-### _Additional options_
 
-Some projects need to communicate additional information to users and can benefit from additional sections in the README file.  It's difficult to give specific instructions &ndash; a lot depends on your software, your intended audience, etc.  Use your judgment and ask for feedback from users or colleagues to help figure out what else is worth explaining.
-
+```
 
 Known issues and limitations
 ----------------------------
 
-In this section, summarize any notable issues and/or limitations of your software.  If none are known yet, this section can be omitted (and don't forget to remove the corresponding entry in the [Table of Contents](#table-of-contents) too); alternatively, you can leave this section in and write something along the lines of "none are known at this time".
+Currently supports searching in the current directory for a
+"my.cnf" file or the user's home directory for ".my.cnf". Assumes
+a Unix style file system (using path separate and dot prefix).
+Does not current support looking for other types of configuration files.
 
 
 Getting help
 ------------
 
-Inform readers of how they can contact you, or at least how they can report problems they may encounter.  This may simply be a request to use the issue tracker on your repository, but many projects have associated chat or mailing lists, and this section is a good place to mention those.
-
+File an issues on GitHub, see https://github.com/caltechlibrary/cfg/issues
 
 Contributing
 ------------
