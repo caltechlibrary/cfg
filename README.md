@@ -6,7 +6,7 @@ e.g. MySQL's my.cnf or other "ini" style configration. Wraps
 Python 3's standard configparser. 
 
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg?style=flat-square)](https://choosealicense.com/licenses/bsd-3-clause)
-[![Latest release](https://img.shields.io/github/v/release/caltechlibrary/template.svg?style=flat-square&color=b44e88)](https://github.com/caltechlibrary/template/releases)
+[![Latest release](https://img.shields.io/github/v/release/caltechlibrary/cfg.svg?style=flat-square&color=b44e88)](https://github.com/caltechlibrary/cfg/releases)
 
 
 Table of contents
