@@ -91,4 +91,5 @@ my.conf
 # Project-specific things to ignore:
 # ..........................................................................
 dist/
+build/
 *.egg-info/
