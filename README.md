@@ -101,7 +101,7 @@ Software produced by the Caltech Library is Copyright © 2021 California Institu
 Authors and history
 ---------------------------
 
-In this section, list the authors and contributors to your software project.  Adding additional notes here about the history of the project can make it more interesting and compelling.  This is also a place where you can acknowledge other contributions to the work and the use of other people's software or tools.
+- R. S. Doiel
 
 
 Acknowledgments
