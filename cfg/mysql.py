@@ -3,7 +3,7 @@ from configparser import ConfigParser
 
 _home = os.getenv('HOME')
 
-def FindConfig(names = ['.my.cnf', 'my.cnf'], search_path = ['.', _home]): 
+def FindConfig(names = ['my.cnf', '.my.cnf'], search_path = ['.', _home]): 
     '''FindConfig checks each of the expected names in the search path
        returning None if none are found, otherwise the first one found.
        The defaults roughly mimic the MySQL search behavoir.
