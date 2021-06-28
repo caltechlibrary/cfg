@@ -11,7 +11,7 @@ Installing from source
 ```
 git clone git@github.com:caltechlibrary/cfg
 cd cfg
-python3 -m pip install -r requirements.txt
+python3 -m pip install --user -r requirements.txt
 python3 setup.py install --user
 ```
 
