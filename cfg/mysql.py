@@ -11,7 +11,7 @@ def FindConfig(name = 'my.cnf'):
         my_cnf = os.path.join(home,'.my.cnf')
     return my_cnf
 
-def ParseConfig(name, database = None, host = 'localhost', port = '3306', socket = '/tmp/mysql.sock'):
+def ParseConfig(name, database = None, host = 'localhost', port = '3306'):
     client = None
     config = ConfigParser()
     if config != None:
@@ -20,7 +20,6 @@ def ParseConfig(name, database = None, host = 'localhost', port = '3306', socket
         client = { 
             'host': host,
             'port': port,
-            'socket': socket,
             'database': database,
             'user': None,
             'password': None

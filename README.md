@@ -40,7 +40,8 @@ and returns a dictionary of key/value parse.
 Installation
 ------------
 
-cfg is installable with Python setup.py. 
+Requires: Git, Python 3.8 and pip. The cfg package
+is installable with Python 3 setup.py. 
 
 ```
 git clone git@github.com:caltechlibrary/cfg
