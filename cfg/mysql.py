@@ -11,7 +11,7 @@ def FindConfig(name = 'my.cnf'):
         my_cnf = os.path.join(home,'.my.cnf')
     return my_cnf
 
-def ParseConfig(name, database = None, host = 'localhost', port = '3306'):
+def ParseConfig(name, database = None, host = 'localhost', port = 3306):
     client = None
     config = ConfigParser()
     if config != None:
@@ -19,7 +19,7 @@ def ParseConfig(name, database = None, host = 'localhost', port = '3306'):
         # Set our handly defaults
         client = { 
             'host': host,
-            'port': port,
+            'port': int(port),
             'database': database,
             'user': None,
             'password': None
