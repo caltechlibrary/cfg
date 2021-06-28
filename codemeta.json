@@ -6,7 +6,7 @@
   "codeRepository": "https://github.com/caltechlibrary/cfg",
   "issueTracker": "https://github.com/caltechlibrary/cfg/issues",
   "license": "https://github.com/caltechlibrary/cfg/blob/master/LICENSE",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": [
     {
       "@type": "Person",
