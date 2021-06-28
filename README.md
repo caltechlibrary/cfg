@@ -45,20 +45,21 @@ cfg is installable with Python setup.py.
 ```
 git clone git@github.com:caltechlibrary/cfg
 cd cfg
-python3 setup.py install
+python3 -m pip install --user -r requirements.txt
+python3 setup.py install --user
 ```
 
 Usage
 -----
 
 Once installed this Python 3 package can be included using 
-the standard `from cfg import ...` pattern. Here's an example
+the standard `from cfg.SYSTEM_INI import ...` pattern. Here's an example
 of installing it to return a configuration needed for a MySQL
 connection.
 
 ```
 import sys
-from cfg import FindConfig, ParseConfig
+from cfg.mysql import FindConfig, ParseConfig
 
 my_cnf = FindConfig()
 if my_cnf == None:
@@ -68,17 +69,16 @@ conf = ParseConfig(my_cnf, database = 'mydb')
 if conf == None:
     print(f'''Can't parse {my_cnf}''')
     sys.exit(1)
-
-
 ```
 
 Known issues and limitations
 ----------------------------
 
-Currently supports searching in the current directory for a
-"my.cnf" file or the user's home directory for ".my.cnf". Assumes
-a Unix style file system (using path separate and dot prefix).
-Does not current support looking for other types of configuration files.
+Currently supports MySQL conf files first searching in the 
+current directory for a "my.cnf" file or the user's home
+directory for ".my.cnf". Assumes a Unix style file system (using
+path separate and dot prefix).  Does not current support looking
+for other types of configuration files.
 
 
 Getting help
