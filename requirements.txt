@@ -1,1 +1,2 @@
 setuptools
+cltests >= 0.0.1
