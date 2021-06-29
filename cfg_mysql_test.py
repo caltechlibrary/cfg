@@ -34,6 +34,7 @@ def testParse():
     t = T()
     my_cnf = FindConfig(names = ['my1.cnf'], search_path = ['testdata'])
     conf = ParseConfig(my_cnf)
+    t.Expected(False, conf == None, f"{my_cnf}, conf should not be None")
     expect = {
         "localhost": "Lisbon", "database": "Cyucos",
         "user": "Maz", "password": "Ocean"
